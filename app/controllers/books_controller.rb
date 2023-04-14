@@ -7,9 +7,10 @@ class BooksController < ApplicationController
     book = Book.new(book_params)
     book.save
     redirect_to '/top'
-  end 
+  end
   
   def index
+    @books = Book.all
   end
 
   def show
@@ -20,7 +21,7 @@ class BooksController < ApplicationController
   
   private
   # ストロングパラメータ
-  def list_params
-    params.require(:list).permit(:title, :body, :image)
+  def book_params
+    params.require(:book).permit(:title, :body, :image)
   end
 end
