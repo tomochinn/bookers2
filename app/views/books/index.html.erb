@@ -1,14 +1,17 @@
+<div class="d-flex flex-wrap">
+
 <!--User infoとNew Book-->
 <%= render 'book', books: @books %>
 
-<h1>Books</h1>
+<h2>Books</h2>
 
 <% @books.each do |book| %>
 
   <p>Title</p>
-  <span><%= book.title %></span>
+  <%= link_to book.title, book_path(book.id) %>
   
   <p>Opinion</p>
   <span><%= book.body %></span>
   
 <% end %>
+</div>
