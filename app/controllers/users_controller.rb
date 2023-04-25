@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
   
+  def index
+    @users = User.all
+  end
+  
   def show
-    @user = User.find(params[:id])
-    @books = @user.books
-    @profile_image = @user.profile_image.page(params[:page])
+    # @user = User.find(params[:id])
+    # @books = @user.books
+    # @profile_image = @user.profile_image.page(params[:page])
   end
 
   def edit

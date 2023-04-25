@@ -12,18 +12,29 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @book = Book.new
+    @user = current_user
   end
 
   def show
-    @book = Book.where(params[:id])
+    @newbook = Book.new
+    @book = Book.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def edit
+    @book = Book.find(params[:id])
+  end
+  
+  def update
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to books_path(book.id)  
   end
 
   private
   # ストロングパラメータ
   def book_params
-    params.require(:book).permit(:title, :body, :image)
+    params.require(:book).permit(:title, :body)
   end
 end

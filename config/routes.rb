@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   
   get "homes/about" => "homes#about"
-  resources :books, only: [:new, :index, :show, :create, :edit]
-  resources :users, only: [:edit, :show]
+  resources :books, only: [:new, :index, :show, :create, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :registrations
   resources :sessions
   
