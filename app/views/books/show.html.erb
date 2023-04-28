@@ -1,62 +1,31 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <main>
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      
 
-
-<h2>User info</h2>
-<%= image_tag "default-image.jpg" %>
-<table class="table">
-  <tbody>
-    <tr>
-      <th>name</th>
-      <th><%= @user.name %></th>
-    </tr>
-    <tr>
-      <th>introduction</th>
-    </tr>
-    <tr>
-      <th>
-        <%= link_to edit_user_path(@user.id) do %>
-          <div class="btn btn-outline-secondary btn-block">
-          <i class="fa-solid fa-user-gear"></i>
-          </div>
-        <% end %>
-        </th>
-    </tr>
-  </tbody>
-</table>
-
-<!--New Bookの部分テンプレート-->
-<%= render 'book', book: @newbook %>
+    <!--New BookとUser infoの部分テンプレート-->
+    <%= render 'book', book: @newbook, user: @user %>
     </div>
 
+<!--Book detail部分-->
 <div class="col-md-8 offset-md-1">
 <h2>Book detail</h2>
 <table class="table">
-  <tbody>
-    <tr>
-      <td>
-        <!--user情報-->
-      </td>
-      <td>
-        
-      </td>
-    </tr>
-  </tbody>
-  <thead>
-    <tr>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
 
   <tbody>
     <tr>
+      <td>
+        User image</br>
+        User name
+      </td>
       <td><%= @book.title %></td>
       <td><%= @book.body %></td>
-      <td><%= link_to "Edit", edit_book_path(@book) %></td>
-      <td><%= link_to "Destroy", book_path(@book) ,method: :delete %></td>
+      <td><%= link_to "Edit", edit_book_path(@book),class: "btn btn-success" %></td>
+      <td><%= link_to "Destroy", books_path(@book.id), method: :delete, class: "btn btn-danger" %></td>
     </tr>
   </tbody>
 </table>

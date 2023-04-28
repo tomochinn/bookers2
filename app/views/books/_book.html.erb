@@ -1,6 +1,10 @@
 <!--User Infoの部分テンプレート-->
 <h2>User info</h2>
-  <%= image_tag "default-image.jpg" %>
+  <% if user.profile_image.attached? %>
+    <%= image_tag user.get_profile_image %>
+  <% else %>
+    <%= image_tag 'default-image.jpg' %>
+  <% end %>
     <table class="table">
       <tbody>
         <tr>
@@ -9,18 +13,17 @@
         </tr>
         <tr>
           <th>introduction</th>
-        </tr>
-        <tr>
-          <th>
-            <%= link_to edit_user_path(user.id) do %>
-            <div class="btn btn-outline-secondary btn-block">
-            <i class="fa-solid fa-user-gear"></i>
-            </div>
-            <% end %>
-          </th>
+          <th><%= user.introduction %></th>
         </tr>
       </tbody>
     </table>
+    <div class="row">
+      <%= link_to edit_user_path(user.id) do %>
+        <div class="btn btn-outline-secondary btn-block">
+        <i class="fa-solid fa-user-gear "></i>
+        </div>
+      <% end %>
+    </div>
 
 <!--New Bookの部分テンプレート-->
 <h2>New book</h2>
